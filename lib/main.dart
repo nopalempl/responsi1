@@ -1,47 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:tokokita/helpers/user_info.dart';
-import 'package:tokokita/ui/login_page.dart';
-import 'package:tokokita/ui/produk_page.dart';
+import 'package:responsi1/ui/tugas_form.dart';
+import 'package:responsi1/ui/tugas_page.dart';
+import 'package:responsi1/ui/tugas_detail.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  Widget page = const CircularProgressIndicator();
-
-  @override
-  void initState() {
-    super.initState();
-    isLogin();
-  }
-
-  void isLogin() async {
-    var token = await UserInfo().getToken();
-    if (token != null) {
-      setState(() {
-        page = const ProdukPage();
-      });
-    } else {
-      setState(() {
-        page = const LoginPage();
-      });
-    }
-  }
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Toko Kita',
-      debugShowCheckedModeBanner: false,
-      home: page,
+      title: 'Aplikasi Daftar Tugas',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: TugasPage(),
     );
   }
 }

@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:http/http.dart' as http;
-import 'package:tokokita/helpers/user_info.dart';
+import 'package:responsi1/helpers/user_info.dart';
 import 'app_exception.dart';
 
 class Api {
@@ -35,7 +35,7 @@ class Api {
     var token = await UserInfo().getToken();
     var responseJson;
     try {
-      final response = await http.delete(Uri.parse(url),
+      final response = await http.post(Uri.parse(url),
           headers: {HttpHeaders.authorizationHeader: "Bearer  $token"});
       responseJson = _returnResponse(response);
     } on SocketException {
